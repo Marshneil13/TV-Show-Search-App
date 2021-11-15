@@ -1,8 +1,9 @@
 const form = document.querySelector('#searchForm');
+
 form.addEventListener('submit', async function(e){
-    e.preventDefault();
+    e.preventDefault();//to prevent the browser from executing the default action
     const searchTerm = form.elements.query.value;
-    const config = {params: {q: searchTerm}};
+    const config = {params: {q: searchTerm}};//setting config values
     const res= await axios.get(`https://api.tvmaze.com/search/shows`,config);
     displayShows(res.data);
     form.elements.query.value = "";
@@ -20,4 +21,4 @@ const displayShows = (shows) => {
 // app.js:12 Uncaught (in promise) TypeError: Cannot read properties of null (reading 'medium')
 //     at displayShows (app.js:12)
 //     at HTMLFormElement.<anonymous> (app.js:6)
-// purpose of line 11
+// purpose of line 14
